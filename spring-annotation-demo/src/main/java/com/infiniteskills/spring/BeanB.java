@@ -1,19 +1,19 @@
 package com.infiniteskills.spring;
 
-import org.springframework.beans.factory.BeanNameAware;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-public class BeanB implements BeanNameAware, AccessibleBeanName{
+@Component
+public class BeanB{
 
-	private String beanName;
-	
-	//@Override
-	public void setBeanName(String beanName) {
-		this.beanName = beanName;
+	private BeanC beanC;
+
+	public BeanC getBeanC() {
+		return beanC;
 	}
-	
-	public String getBeanName() {
-		return this.beanName;
+
+	@Autowired
+	public void setBeanC(BeanC beanC) {
+		this.beanC = beanC;
 	}
-	
-	
 }
