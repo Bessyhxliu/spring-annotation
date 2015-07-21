@@ -1,19 +1,34 @@
 package com.infiniteskills.spring;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
 public class BeanA {
+
 	private BeanB beanB;
 
-	@Autowired
-	public BeanA(BeanB beanB) {
-		this.beanB = beanB;
-	}
-
-	public void execute() {
-		System.out.println(this.beanB.getBeanC().getMessage());
+	public BeanA() {
+		
 	}
 	
+	@PreDestroy
+	public void destroy() {
+		System.out.println("Destroying our bean");
+	}
+	
+	@PostConstruct
+	public void init() {		
+		System.out.println(beanB.getMessage());
+	}
+	
+	public BeanB getBeanB() {
+		return beanB;
+	}
+
+	public void setBeanB(BeanB beanB) {
+		this.beanB = beanB;
+	}
 }

@@ -3,17 +3,15 @@ package com.infiniteskills.spring;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-@Component
 public class BeanB{
 
-	private BeanC beanC;
+	private String message;
 
-	public BeanC getBeanC() {
-		return beanC;
+	public String getMessage() {
+		return message;
 	}
 
-	@Autowired
-	public void setBeanC(BeanC beanC) {
-		this.beanC = beanC;
+	public void setMessage(String message) {
+		this.message = message;
 	}
 }
